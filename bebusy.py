@@ -152,4 +152,4 @@ if __name__ == "__main__":
     while True:
         f = random.choice(func_list)
         f(get_random_message())
-        time.sleep(0.1)
+        time.sleep(random.random() / 5)
