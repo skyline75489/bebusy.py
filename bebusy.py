@@ -148,6 +148,8 @@ def get_random_message():
     return random.choice(sentences)
 
 if __name__ == "__main__":
-    for i in range(1000):
-        logger.info(get_random_message())
+    func_list = [logger.info, logger.debug, logger.warn, logger.error, logger.critical]
+    while True:
+        f = random.choice(func_list)
+        f(get_random_message())
         time.sleep(0.1)
