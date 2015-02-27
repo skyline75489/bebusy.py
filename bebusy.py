@@ -77,7 +77,7 @@ logger = logging.getLogger(__name__)
 def get_random_system_info():
     path = os.environ['PATH']
     pwd = os.environ['PWD']
-    tmpdir = os.environ['TMPDIR']
+    tmpdir = os.environ.get('TMPDIR', '/tmp/')
     home = os.environ['HOME']
 
     return random.choice([path, pwd, tmpdir, home])
