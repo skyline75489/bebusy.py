@@ -69,6 +69,9 @@ class ColoredLogger(logging.Logger):
 
 logging.setLoggerClass(ColoredLogger)
 logger = logging.getLogger(__name__)
+# logging.basicConfig(format='[%(asctime)s] %(filename)s:%(lineno)d %(levelname)s %(message)s',
+#                    level=logging.DEBUG)
+
 
 
 def get_random_system_info():
@@ -78,7 +81,6 @@ def get_random_system_info():
     home = os.environ['HOME']
 
     return random.choice([path, pwd, tmpdir, home])
-
 
 def get_random_nodejs_package():
     modules = [
@@ -111,45 +113,33 @@ def get_random_status():
     ]
     return random.choice(all_status)
 
-
 def get_random_version():
-    major_ver = random.randint(1, 6)
+    major_ver = random.randint(1, 9)
     minor_ver = random.randint(1, 9)
     dev_ver = random.randint(1, 9)
 
     return "v" + str(major_ver) + "." + str(minor_ver) + "." + str(dev_ver)
 
-
 def get_random_message():
     sentences = [
         "it worked if it ends with ok",
-        "cli [ 'node', '" +
-        get_random_system_info() + "','install','--verbose' ]",
+        "cli [ 'node', '" + get_random_system_info() + "','install','--verbose' ]",
         "using npm@1.4.28 " + get_random_system_info(),
         "using node@v0.10.32",
         "readDependencies using package.json deps",
-        "install where, deps " +
-        get_random_system_info() +
-        ", [ '" + get_random_nodejs_package() + "' ] ]",
+        "install where, deps " + get_random_system_info() + ", [ '" + get_random_nodejs_package() + "' ] ]",
         "readDependencies using package.json deps",
-        "already installed skipping " +
-        get_random_nodejs_package() + "@" + get_random_version(),
-        "already installed skipping boganipsum@0.1.0 " +
-        get_random_system_info(),
+        "already installed skipping " + get_random_nodejs_package() + "@" + get_random_version(),
+        "already installed skipping boganipsum@0.1.0 " + get_random_system_info(),
         "build /Users/samuel/Documents/bebusy",
         "linkStuff [false, false, false, '/Users/samuel/Documents']",
-        "rebuildBundles " +
-        get_random_nodejs_package() + "@" + get_random_version(),
+        "rebuildBundles " + get_random_nodejs_package() + "@" + get_random_version(),
         "rebuildBundles ['.bin', 'boganipsum', 'colors']",
         "install " + get_random_nodejs_package() + "@" + get_random_version(),
-        "postinstall " +
-        get_random_nodejs_package() + "@" + get_random_version(),
-        "prepublish " +
-        get_random_nodejs_package() + "@" + get_random_version(),
-        "preinstall " +
-        get_random_nodejs_package() + "@" + get_random_version(),
-        "linkStuff " +
-        get_random_nodejs_package() + "@" + get_random_version(),
+        "postinstall " + get_random_nodejs_package() + "@" + get_random_version(),
+        "prepublish " + get_random_nodejs_package() + "@" + get_random_version(),
+        "preinstall " + get_random_nodejs_package() + "@" + get_random_version(),
+        "linkStuff " + get_random_nodejs_package() + "@" + get_random_version(),
         "linkBins " + get_random_nodejs_package() + "@" + get_random_version(),
         "linkMans " + get_random_nodejs_package() + "@" + get_random_version(),
         "exit [0, true]",
@@ -158,8 +148,7 @@ def get_random_message():
     return random.choice(sentences)
 
 if __name__ == "__main__":
-    func_list = [logger.info, logger.debug,
-                 logger.warn, logger.error, logger.critical]
+    func_list = [logger.info, logger.debug, logger.warn, logger.error, logger.critical]
     while True:
         f = random.choice(func_list)
         f(get_random_message())
